@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Kanban.Data;
-using Microsoft.CodeAnalysis.Options;
+using Kanban.Interfaces;
+using Kanban.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kanban.Extensions;
@@ -16,5 +13,7 @@ public static class ApplicationServiceExtension
         {
             options.UseSqlite(iConfig.GetConnectionString("DefaultConnection"));
         });
+
+        services.AddScoped<ITaskCardRepository, TaskCardRepository>();
     }
 }

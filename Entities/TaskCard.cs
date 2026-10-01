@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kanban.Entities;
-public class Card : BaseEntity
+public class TaskCard : BaseEntity
 {
     public string Title { get; set; } = null!;
     public string Description { get; set; } = null!;
