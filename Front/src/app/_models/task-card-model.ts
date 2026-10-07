@@ -3,5 +3,5 @@ export interface TaskCardModel {
     title: string;
     description: string;
     status: number;
-    createdAt: Date;
+    addedDate: Date;
 }

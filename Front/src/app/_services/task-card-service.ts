@@ -9,7 +9,7 @@ import { TaskCardModel } from '../_models/task-card-model';
 })
 export class TaskCardService {
   http = inject(HttpClient);
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.apiUrl + "TaskCard/";
 
   getAllTasks(): Observable<TaskCardModel[]> {
     return this.http.get<TaskCardModel[]>(this.apiUrl + "getAllTasks");

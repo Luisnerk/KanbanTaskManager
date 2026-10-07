@@ -18,15 +18,6 @@ export class TaskBoard {
   completedTasks = signal<TaskCardModel[]>([]);
 
   ngOnInit() {
-    this.newTasks.set(
-        [{
-          id: 1,
-          title: "hola",
-          description: "Esta es un descripción",
-          status: 0,
-          createdAt: new Date("11-19-2026")
-        }]
-    )
     this.loadTaskCards();
   }
 
@@ -35,13 +26,15 @@ export class TaskBoard {
     this._taskCardService.getAllTasks().subscribe({
       next: (data) => {
         tasks.push(...data);
+        this.newTasks.set(tasks.filter(task => task.status == 0));
+        this.ongoingTasks.set(tasks.filter(task => task.status == 1));
+        this.completedTasks.set(tasks.filter(task => task.status == 2));
       },
       error: err => {
         console.error("Error al cargar las actividades");
       }
     });
 
-    this.newTasks.set(tasks.filter(task => task.status == 0))
   }
 
   drop(event: CdkDragDrop<TaskCardModel[]>) {
