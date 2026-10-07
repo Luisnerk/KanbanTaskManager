@@ -9,4 +9,5 @@ public interface IBaseRepository<T> where T:BaseEntity
 {
     void Add(T entity);
     Task<int> SaveAsync();
+    Task<IEnumerable<T>> GetListAsync(); 
 }

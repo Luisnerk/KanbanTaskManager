@@ -1,0 +1,56 @@
+/* Contenedor principal de la tarjeta */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: grab; /* Indica que el elemento se puede arrastrar */
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 4px solid #4a90e2; /* Un borde de color para darle vida, puedes cambiarlo según el estado */
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.20);
+    transform: translateY(-2px); /* Se levanta ligeramente */
+}
+
+/* Efecto al hacer clic sostenido (cuando se está arrastrando) */
+.card:active {
+    cursor: grabbing;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* Estilo para el título de la tarea */
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+}
+
+/* Estilo para la descripción */
+.description {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.5;
+    /* Opcional: Truncar el texto si es muy largo (requiere un alto fijo) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Estilo para la fecha o metadatos */
+.date-added {
+    font-size: 12px;
+    color: #999999;
+    text-align: right;
+    margin-top: auto; /* Empuja la fecha hacia abajo si la tarjeta crece */
+    font-weight: 500;
+}

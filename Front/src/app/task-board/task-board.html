@@ -1,0 +1,45 @@
+<div class="task-board">
+    <div #newList="cdkDropList" 
+        class="new-tasks" 
+        cdkDropList 
+        [cdkDropListConnectedTo]="[ongoingList, completedList]" 
+        [cdkDropListData]="newTasks()"
+        (cdkDropListDropped)="drop($event)"
+    >
+        <div class="status-title">Nuevo</div>
+        <div>
+            @for (task of newTasks(); track task.id) {
+                <app-task-card  [task]=task [cdkDragData]="task" cdkDrag/>
+            }
+        </div>
+    </div>
+    <div #ongoingList="cdkDropList" 
+        class="ongoing-tasks" 
+        cdkDropList 
+        [cdkDropListData]="ongoingTasks()"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListConnectedTo]="[newList, completedList]"
+    >
+        <div class="status-title">En progreso</div>
+        <div>
+            @for (task of ongoingTasks(); track task.id) {
+                <app-task-card  [task]=task [cdkDragData]="task" cdkDrag/>
+            }
+        </div>
+    </div>
+    <div #completedList="cdkDropList" 
+        class="completed-tasks" 
+        cdkDropList 
+        [cdkDropListData]="completedTasks()"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListConnectedTo]="[newList, ongoingList]"
+    >
+        <div class="status-title">Terminado</div>
+        <div>
+            @for (task of completedTasks(); track task.id) {
+                <app-task-card  [task]=task [cdkDragData]="task" cdkDrag/>
+            }
+        </div>
+
+    </div>
+</div>

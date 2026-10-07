@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Kanban.Data;
 using Kanban.Entities;
 using Kanban.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kanban.Repositories;
 
@@ -20,6 +21,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         _context.Set<T>().Add(entity);
 
+    }
+
+    public virtual async Task<IEnumerable<T>> GetListAsync()
+    {
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task<int> SaveAsync()

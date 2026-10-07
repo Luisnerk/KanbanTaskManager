@@ -1,0 +1,5 @@
+<div class="card">
+    <div class="title">{{ task().title }}</div>
+    <div class="description">{{ task().description }}</div>
+    <div class="date-added">{{ task().createdAt.toISOString().split('T')[0] }}</div>
+</div>
