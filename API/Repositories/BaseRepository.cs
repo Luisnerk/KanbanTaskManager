@@ -17,18 +17,23 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         _context = context;
     }
     
-    public void Add(T entity)
+    public void add(T entity)
     {
         _context.Set<T>().Add(entity);
 
     }
 
-    public virtual async Task<IEnumerable<T>> GetListAsync()
+    public virtual async Task<IEnumerable<T>> getListAsync()
     {
         return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
-    public async Task<int> SaveAsync()
+    public virtual void updateItem(T item)
+    {
+        _context.Set<T>().Update(item);
+    }
+
+    public async Task<int> saveAsync()
     {
         return await _context.SaveChangesAsync();
     }

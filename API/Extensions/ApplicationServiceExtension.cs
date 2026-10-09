@@ -1,3 +1,4 @@
+using System.Reflection;
 using Kanban.Data;
 using Kanban.Interfaces;
 using Kanban.Repositories;
@@ -9,6 +10,7 @@ public static class ApplicationServiceExtension
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration iConfig)
     {
         services.AddControllers();
+        services.AddAutoMapper(Assembly.GetEntryAssembly());
         services.AddCors(options =>
             {
                 options.AddPolicy(name: "CORS_1",
