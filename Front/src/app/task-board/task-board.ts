@@ -38,11 +38,30 @@ export class TaskBoard {
   }
 
   drop(event: CdkDragDrop<TaskCardModel[]>) {
-    console.log(event.previousContainer.id);
+    if (event.container.id == event.previousContainer.id) {
+      return;
+    }
+
     transferArrayItem(event.previousContainer.data,
                       event.container.data,
                       event.previousIndex,
                       event.currentIndex
     )
+
+    switch(event.container.id) {
+      case("new"): 
+        event.item.data.status = 0;
+        break;
+      case("ongoing"): 
+        event.item.data.status = 1;
+        break;
+      case("complete"): 
+        event.item.data.status = 2;
+        break;
+    }
+
+    this._taskCardService.updateTask(event.item.data).subscribe({
+      error: () => console.log("Ocurrió un error al actualizar la tarea")
+    });
   }
 }

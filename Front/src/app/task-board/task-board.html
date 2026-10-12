@@ -1,5 +1,6 @@
 <div class="task-board">
     <div #newList="cdkDropList" 
+        id="new"
         class="new-tasks" 
         cdkDropList 
         [cdkDropListConnectedTo]="[ongoingList, completedList]" 
@@ -14,6 +15,7 @@
         </div>
     </div>
     <div #ongoingList="cdkDropList" 
+        id="ongoing"
         class="ongoing-tasks" 
         cdkDropList 
         [cdkDropListData]="ongoingTasks()"
@@ -28,6 +30,7 @@
         </div>
     </div>
     <div #completedList="cdkDropList" 
+        id="complete"
         class="completed-tasks" 
         cdkDropList 
         [cdkDropListData]="completedTasks()"

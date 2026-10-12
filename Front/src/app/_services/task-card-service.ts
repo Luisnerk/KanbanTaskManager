@@ -14,4 +14,8 @@ export class TaskCardService {
   getAllTasks(): Observable<TaskCardModel[]> {
     return this.http.get<TaskCardModel[]>(this.apiUrl + "getAllTasks");
   }
+
+  updateTask(task: TaskCardModel): Observable<object> {
+    return this.http.put(this.apiUrl + "updateTask", task);
+  }
 }
