@@ -64,4 +64,10 @@ export class TaskBoard {
       error: () => console.log("Ocurrió un error al actualizar la tarea")
     });
   }
+
+  deleteTask(task: TaskCardModel){
+    this._taskCardService.deleteTask(task).subscribe({
+      error: () => console.log("Error al eliminar")
+    })
+  }
 }

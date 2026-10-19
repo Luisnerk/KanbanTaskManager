@@ -40,7 +40,7 @@
         <div class="status-title">Terminado</div>
         <div>
             @for (task of completedTasks(); track task.id) {
-                <app-task-card  [task]=task [cdkDragData]="task" cdkDrag/>
+                <app-task-card  (deleteTaskEm)="deleteTask($event)" [task]=task [cdkDragData]="task" cdkDrag/>
             }
         </div>
 

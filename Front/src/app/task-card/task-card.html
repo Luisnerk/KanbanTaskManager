@@ -1,5 +1,6 @@
 <div class="card">
     <div class="title">{{ task().title }}</div>
     <div class="description">{{ task().description }}</div>
+    <div class="btn-section"><button class="btn-delete" (click)="deleteTask()">Eliminar</button></div>
     <div class="date-added">{{ task().addedDate }}</div>
 </div>

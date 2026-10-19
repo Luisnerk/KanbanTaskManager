@@ -7,8 +7,9 @@ using Kanban.Entities;
 namespace Kanban.Interfaces;
 public interface IBaseRepository<T> where T:BaseEntity
 {
-    void add(T entity);
-    Task<int> saveAsync();
-    Task<IEnumerable<T>> getListAsync(); 
-    void updateItem(T item);
+    void Add(T entity);
+    Task<int> SaveAsync();
+    Task<IEnumerable<T>> GetListAsync(); 
+    void UpdateItem(T item);
+    void DeleteItem(T item);
 }

@@ -18,4 +18,8 @@ export class TaskCardService {
   updateTask(task: TaskCardModel): Observable<object> {
     return this.http.put(this.apiUrl + "updateTask", task);
   }
+
+  deleteTask(task: TaskCardModel): Observable<object> {
+    return this.http.delete(this.apiUrl + "deleteTask", {body: task});
+  }
 }

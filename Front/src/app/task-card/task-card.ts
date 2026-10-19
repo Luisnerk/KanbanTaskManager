@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { TaskCardModel } from '../_models/task-card-model';
 
 @Component({
@@ -8,6 +8,10 @@ import { TaskCardModel } from '../_models/task-card-model';
   styleUrl: './task-card.css',
 })
 export class TaskCard {
+  deleteTaskEm = output<TaskCardModel>();
   task = input.required<TaskCardModel>();
   
+  deleteTask() {
+    this.deleteTaskEm.emit(this.task());
+  }
 }
